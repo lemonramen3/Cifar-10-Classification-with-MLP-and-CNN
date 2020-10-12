@@ -11,7 +11,9 @@ import torch.optim as optim
 
 from model import Model
 from load_data import load_cifar_4d
+from tensorboardX import SummaryWriter
 
+writer = SummaryWriter()
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--batch_size', type=int, default=100,
@@ -123,6 +125,11 @@ if __name__ == '__main__':
 
 			val_acc, val_loss = valid_epoch(cnn_model, X_val, y_val)
 
+			writer.add_scalar('train_acc', train_acc, epoch)
+			writer.add_scalar('train_loss', train_loss, epoch)
+			writer.add_scalar('val_acc', val_acc, epoch)
+			writer.add_scalar('val_loss', val_loss, epoch)
+
 			if val_acc >= best_val_acc:
 				best_val_acc = val_acc
 				best_epoch = epoch
@@ -166,3 +173,5 @@ if __name__ == '__main__':
 			if result == y_test[i]:
 				count += 1
 		print("test accuracy: {}".format(float(count) / len(X_test)))
+
+writer.close()
