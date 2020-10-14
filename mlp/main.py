@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--batch_size', type=int, default=100,
 	help='Batch size for mini-batch training and evaluating. Default: 100')
-parser.add_argument('--num_epochs', type=int, default=100,
+parser.add_argument('--num_epochs', type=int, default=40,
 	help='Number of training epoch. Default: 20')
 parser.add_argument('--learning_rate', type=float, default=1e-3,
 	help='Learning rate during optimization. Default: 1e-3')
