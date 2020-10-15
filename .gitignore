@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+/mlp/.idea/
+/cnn/.idea/
+.idea/.gitignore
+.idea/Cifar-10-Classification-with-MLP-and-CNN.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/other.xml
+.idea/vcs.xml
+cifar-10_data/
+cnn/__pycache__/
+cnn/runs/
+cnn/train/
+mlp/__pycache__/
+mlp/runs/
+mlp/train/

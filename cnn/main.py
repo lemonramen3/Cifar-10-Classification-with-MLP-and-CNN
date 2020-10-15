@@ -81,7 +81,8 @@ def valid_epoch(model, X, y): # Valid Process
 	st, ed, times = 0, args.batch_size, 0
 	while st < len(X) and ed <= len(X):
 		X_batch, y_batch = torch.from_numpy(X[st:ed]).to(device), torch.from_numpy(y[st:ed]).to(device)
-		loss_, acc_ = model(X_batch, y_batch)
+		with torch.no_grad():
+			loss_, acc_ = model(X_batch, y_batch)
 
 		loss += loss_.cpu().data.numpy()
 		acc += acc_.cpu().data.numpy()
@@ -95,7 +96,8 @@ def valid_epoch(model, X, y): # Valid Process
 
 def inference(model, X): # Test Process
 	model.eval()
-	pred_ = model(torch.from_numpy(X).to(device))
+	with torch.no_grad():
+		pred_ = model(torch.from_numpy(X).to(device))
 	return pred_.cpu().data.numpy()
 
 

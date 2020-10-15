@@ -49,7 +49,7 @@ class Dropout(nn.Module):
 
     def forward(self, input):
         # input: [batch_size, num_feature_map * height * width]
-        f = (torch.rand(input.shape, device=input.device) <= self.keep).float()
+        f = torch.rand(input.shape, device=input.device) <= self.keep
         input = f * input / self.keep
         return input
 
